@@ -10,6 +10,7 @@ const {
 } = require("./config/config");
 const session = require("express-session");
 const redis = require("redis");
+const cors = require("cors");
 
 let RedisStore = require("connect-redis")(session);
 let redisClient = redis.createClient({
@@ -22,6 +23,8 @@ const AuthRouter = require("./routes/AuthRouter");
 const app = express();
 
 app.enable("trust proxy");
+
+app.use(cors());
 
 app.use(
   session({
