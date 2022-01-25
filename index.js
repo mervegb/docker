@@ -21,6 +21,8 @@ const AuthRouter = require("./routes/AuthRouter");
 
 const app = express();
 
+app.enable("trust proxy");
+
 app.use(
   session({
     store: new RedisStore({ client: redisClient }),
@@ -43,8 +45,9 @@ mongoose
   .then(() => console.log("Connected to Database"))
   .catch((error) => console.log(error));
 
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send("<h2>hello mero!!!</h2>");
+  console.log("yes it ran");
 });
 
 app.use("/api/v1/posts", PostRouter);
