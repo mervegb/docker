@@ -8,6 +8,7 @@ const {
 } = require("./config/config");
 
 const PostRouter = require("./routes/PostRouter");
+const UserRouter = require("./routes/UserRouter");
 
 const app = express();
 app.use(express.json());
@@ -23,5 +24,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/posts", PostRouter);
+app.use("/api/v1/user", UserRouter);
 
 app.listen(process.env.PORT || 5000, () => console.log("Listening to port"));
