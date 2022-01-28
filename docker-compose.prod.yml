@@ -9,5 +9,13 @@ services:
       args:
         NODE_ENV: production
     environment:
-      - NODE_ENV=production
+      - NODE_ENV=development
+      - MONGO_USER=merve
+      - MONGO_PASSWORD=mypassword
+      - SESSION_SECRET=secret
     command: node index.js
+
+    mongo:
+      environment:
+        - MONGO_INITDB_ROOT_USERNAME=merve
+        - MONGO_INITDB_ROOT_PASSWORD=mypassword
